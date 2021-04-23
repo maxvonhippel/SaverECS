@@ -6,7 +6,7 @@ TODO
 
 ## Citation
 
-TODO
+[CMU tutorial on cruise control.](http://ctms.engin.umich.edu/CTMS/index.php?example=CruiseControl&section=SystemModeling)
 
 ## Correctness Property
 
