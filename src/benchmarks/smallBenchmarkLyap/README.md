@@ -1,4 +1,4 @@
-# Yaw Damper
+# Small LYAP Benchmark
 
 ## Description
 

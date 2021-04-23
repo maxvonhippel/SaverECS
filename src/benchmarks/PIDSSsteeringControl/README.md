@@ -1,4 +1,4 @@
-# Yaw Damper
+# PIDSS Steering Control
 
 ## Description
 

@@ -15,19 +15,19 @@
 void generate_ssaFile(user_inputs::ptr& user_Inputs) {
 	/*
 	 *
-	 1) clang -O1 -g -Xclang -emit-llvm -c benchmarks/mythermo1.c -o benchmarks/test.bc
+	 1) /home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang -O1 -g -X/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang -emit-llvm -c benchmarks/mythermo1.c -o benchmarks/test.bc
 
-	 2) opt -O1 -instnamer -mem2reg  -simplifycfg  -loops  -lcssa -loop-simplify -loop-rotate -loop-unroll -unroll-count=15
+	 2) /home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/opt -O1 -instnamer -mem2reg  -simplifycfg  -loops  -lcssa -loop-simplify -loop-rotate -loop-unroll -unroll-count=15
 	  -unroll-allow-partial   benchmarks/test.bc  -o benchmarks/test1.bc
 
-	 3) opt -O1  -load src/libTestPass.so -testPass benchmarks/test1.bc  -o benchmarks/test
+	 3) /home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/opt -O1  -load src/libTestPass.so -testPass benchmarks/test1.bc  -o benchmarks/test
 
 	 *
 	 */
 	std::string st1, cmd1, st2, cmd2, st3, cmd3;
 	int ret_flag;
 
-	st1 = "clang -O1 -g -Xclang -emit-llvm -c ";
+	st1 = "/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang -O1 -g -X/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang -emit-llvm -c ";
 	cmd1.append(st1);
 	st1 = user_Inputs->getControllerFilename();
 	cmd1.append(st1);
@@ -37,8 +37,8 @@ void generate_ssaFile(user_inputs::ptr& user_Inputs) {
 	//use system(cmd1) command to execute
 	const char *st;
 	st = cmd1.c_str();
-	ret_flag = system(st); //calling clang to emit-llvm's IR of the input controller program file
-	//std::cout<<"clang called: ret_flag = "<<ret_flag <<std::endl;
+	ret_flag = system(st); //calling /home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang to emit-llvm's IR of the input controller program file
+	//std::cout<<"/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/clang called: ret_flag = "<<ret_flag <<std::endl;
 	/*
 	 * If the command argument is a null pointer, a return value of zero indicates that no command processor is available.
 	 * The return value is -1 if it wasn't possible to create the shell process, and otherwise is the status of the shell process.
@@ -48,7 +48,7 @@ void generate_ssaFile(user_inputs::ptr& user_Inputs) {
 		std::cout<<ret_flag<<": Error executing (clang) command for parsing Controller Program!!"<<std::endl;
 		throw(new exception());
 	}
-	st2 = "opt -O1 -instnamer -mem2reg  -simplifycfg  -loops  -lcssa -loop-simplify -loop-rotate -loop-unroll -unroll-count=15 ";
+	st2 = "/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/opt -O1 -instnamer -mem2reg  -simplifycfg  -loops  -lcssa -loop-simplify -loop-rotate -loop-unroll -unroll-count=15 ";
 	cmd2.append(st2);	//change "-unroll-count=3" number 3 to higher value if required
 	//st2 = "-unroll-allow-partial -load lib/libControllerProgramPass.so -ssa lib/fmsafe_ssaFile.bc  -o lib/fmsafe_ssaFile";
 	st2 = "-unroll-allow-partial  lib/fmsafe_ssaFile.bc  -o lib/fmsafe_ssaFile1.bc";
@@ -56,14 +56,14 @@ void generate_ssaFile(user_inputs::ptr& user_Inputs) {
 	//std::cout<<"Command 2 = "<<cmd2<<std::endl;
 	//use system(cmd1) command to execute
 	st = cmd2.c_str();
-	ret_flag = system(st); //opt command for executing the optimization passes to llvm's IR and creating the bit code file
+	ret_flag = system(st); ///home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/opt command for executing the optimization passes to llvm's IR and creating the bit code file
 	// this output file can then be made to pass with our optimization pass.
 	if (ret_flag < 0) {
 		std::cout<< ret_flag<<":Error(1) executing optimization (LLVM) command for parsing Controller Program!!"<< std::endl;
 		throw(new exception());
 	}
 
-	st3 = "opt -O1  -load lib/libTestPass.so -testPass lib/fmsafe_ssaFile1.bc  -o lib/fmsafe_ssaFile";
+	st3 = "/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/opt -O1  -load lib/libTestPass.so -testPass lib/fmsafe_ssaFile1.bc  -o lib/fmsafe_ssaFile";
 
 //	cmd3.append(st3);
 	//std::cout<<"Command 2 = "<<cmd2<<std::endl;
@@ -76,7 +76,7 @@ void generate_ssaFile(user_inputs::ptr& user_Inputs) {
 		throw(new exception());
 	}
 
-//	cmd3.append("lli lib/fmsafe_ssaFile");
+//	cmd3.append("/home/max/projects/research/nds2/CProgramToSMT/llvm/build/bin/lli lib/fmsafe_ssaFile");
 	//std::cout<<"Command 3 = "<<cmd3<<std::endl;
 	//use system(cmd1) command to execute
 //	st = cmd3.c_str();

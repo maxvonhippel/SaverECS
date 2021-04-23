@@ -1,4 +1,4 @@
-# Yaw Damper
+# Double Integration
 
 ## Description
 

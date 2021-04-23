@@ -1,4 +1,4 @@
-# Yaw Damper
+# Steering Control
 
 ## Description
 

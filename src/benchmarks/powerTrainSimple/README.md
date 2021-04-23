@@ -1,4 +1,4 @@
-# Yaw Damper
+# Simplified Power Train
 
 ## Description
 

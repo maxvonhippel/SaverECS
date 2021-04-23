@@ -1,4 +1,4 @@
-# Yaw Damper
+# Lunar Lander
 
 ## Description
 

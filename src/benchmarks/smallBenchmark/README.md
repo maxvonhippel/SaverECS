@@ -1,4 +1,4 @@
-# Yaw Damper
+# Small Benchmark
 
 ## Description
 

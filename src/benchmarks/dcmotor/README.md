@@ -1,4 +1,4 @@
-# Yaw Damper
+# DC Motor
 
 ## Description
 
